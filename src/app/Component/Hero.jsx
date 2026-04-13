@@ -1,151 +1,150 @@
-
-
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 
-
 const Hero = () => {
-    const canvasRef = useRef(null);
-    const [scrollY, setScrollY] = useState(0);
-    const animRef = useRef(null);
+  const canvasRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
+  const animRef = useRef(null);
+  const [progress, setProgress] = useState(0);
+  const heroRef = useRef(null);
 
 
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
 
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-        resize();
-        window.addEventListener("resize", resize);
-
-
-        const particles = Array.from({ length: 80 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.6,
-            vy: (Math.random() - 0.5) * 0.6,
-            r: Math.random() * 2.5 + 0.5,
-            opacity: Math.random() * 0.5 + 0.1,
-            color: Math.random() > 0.5 ? "59,130,246" : "147,197,253",
-        }));
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
 
 
-        const orbs = Array.from({ length: 5 }, (_, i) => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            r: 80 + Math.random() * 120,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
-            hue: 210 + i * 20,
-        }));
-
-        let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
-
-        const handleMouse = (e) => {
-            mouse = { x: e.clientX, y: e.clientY };
-        };
-        window.addEventListener("mousemove", handleMouse);
-
-        const draw = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            orbs.forEach((orb) => {
-                orb.x += orb.vx;
-                orb.y += orb.vy;
-                if (orb.x < -orb.r) orb.x = canvas.width + orb.r;
-                if (orb.x > canvas.width + orb.r) orb.x = -orb.r;
-                if (orb.y < -orb.r) orb.y = canvas.height + orb.r;
-                if (orb.y > canvas.height + orb.r) orb.y = -orb.r;
-
-                const grad = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.r);
-                grad.addColorStop(0, `hsla(${orb.hue}, 80%, 60%, 0.12)`);
-                grad.addColorStop(1, `hsla(${orb.hue}, 80%, 60%, 0)`);
-                ctx.beginPath();
-                ctx.arc(orb.x, orb.y, orb.r, 0, Math.PI * 2);
-                ctx.fillStyle = grad;
-                ctx.fill();
-            });
+    const particles = Array.from({ length: 80 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6,
+      r: Math.random() * 2.5 + 0.5,
+      opacity: Math.random() * 0.5 + 0.1,
+      color: Math.random() > 0.5 ? "59,130,246" : "147,197,253",
+    }));
 
 
-            particles.forEach((p, i) => {
+    const orbs = Array.from({ length: 5 }, (_, i) => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 80 + Math.random() * 120,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      hue: 210 + i * 20,
+    }));
 
-                p.x += p.vx;
-                p.y += p.vy;
+    let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
 
+    const handleMouse = (e) => {
+      mouse = { x: e.clientX, y: e.clientY };
+    };
+    window.addEventListener("mousemove", handleMouse);
 
-                const dx = p.x - mouse.x;
-                const dy = p.y - mouse.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
-                    p.vx += (dx / dist) * 0.08;
-                    p.vy += (dy / dist) * 0.08;
-                }
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      orbs.forEach((orb) => {
+        orb.x += orb.vx;
+        orb.y += orb.vy;
+        if (orb.x < -orb.r) orb.x = canvas.width + orb.r;
+        if (orb.x > canvas.width + orb.r) orb.x = -orb.r;
+        if (orb.y < -orb.r) orb.y = canvas.height + orb.r;
+        if (orb.y > canvas.height + orb.r) orb.y = -orb.r;
 
-                const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-                if (speed > 2) {
-                    p.vx = (p.vx / speed) * 2;
-                    p.vy = (p.vy / speed) * 2;
-                }
-
-
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-
-                particles.forEach((p2, j) => {
-                    if (j <= i) return;
-                    const dx2 = p.x - p2.x;
-                    const dy2 = p.y - p2.y;
-                    const d = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-                    if (d < 130) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(147,197,253,${0.15 * (1 - d / 130)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                });
+        const grad = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.r);
+        grad.addColorStop(0, `hsla(${orb.hue}, 80%, 60%, 0.12)`);
+        grad.addColorStop(1, `hsla(${orb.hue}, 80%, 60%, 0)`);
+        ctx.beginPath();
+        ctx.arc(orb.x, orb.y, orb.r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      });
 
 
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${p.color},${p.opacity})`;
-                ctx.fill();
-            });
+      particles.forEach((p, i) => {
 
-            animRef.current = requestAnimationFrame(draw);
-        };
-
-        draw();
-
-        return () => {
-            cancelAnimationFrame(animRef.current);
-            window.removeEventListener("resize", resize);
-            window.removeEventListener("mousemove", handleMouse);
-        };
-    }, []);
+        p.x += p.vx;
+        p.y += p.vy;
 
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrollY(window.scrollY);
-        };
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          p.vx += (dx / dist) * 0.08;
+          p.vy += (dy / dist) * 0.08;
+        }
 
-        window.addEventListener("scroll", handleScroll);
 
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed > 2) {
+          p.vx = (p.vx / speed) * 2;
+          p.vy = (p.vy / speed) * 2;
+        }
 
-    return (
-        <>
-            <style>{`
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+
+        particles.forEach((p2, j) => {
+          if (j <= i) return;
+          const dx2 = p.x - p2.x;
+          const dy2 = p.y - p2.y;
+          const d = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+          if (d < 130) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(147,197,253,${0.15 * (1 - d / 130)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
+
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color},${p.opacity})`;
+        ctx.fill();
+      });
+
+      animRef.current = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", handleMouse);
+    };
+  }, []);
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
         .hero-section {
@@ -602,139 +601,126 @@ const Hero = () => {
         }
       `}</style>
 
-            <section className="hero-section">
-                <canvas
-                    ref={canvasRef}
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        zIndex: 1,
-                        pointerEvents: "none",
-                    }}
-                />
+      <section className="hero-section">
+        <canvas
+          ref={canvasRef}
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 1,
+            pointerEvents: "none",
+          }}
+        />
 
-                <div className="wave-layer wave-1" style={{ zIndex: 2 }} />
-                <div className="wave-layer wave-2" style={{ zIndex: 2 }} />
-                <div className="wave-layer wave-3" style={{ zIndex: 2 }} />
+        <div className="wave-layer wave-1" style={{ zIndex: 2 }} />
+        <div className="wave-layer wave-2" style={{ zIndex: 2 }} />
+        <div className="wave-layer wave-3" style={{ zIndex: 2 }} />
 
-                <div className="grid-overlay" style={{ zIndex: 3 }} />
+        <div className="grid-overlay" style={{ zIndex: 3 }} />
 
-                <div className="scan-line" style={{ zIndex: 4 }} />
+        <div className="scan-line" style={{ zIndex: 4 }} />
 
-                <div className="float-buildings" style={{ zIndex: 4 }}>
-                    {[
-                        { left: "3%", w: 60, h: 220, delay: "0s", dur: "7s" },
-                        { left: "9%", w: 40, h: 160, delay: "1s", dur: "9s" },
-                        { left: "14%", w: 50, h: 280, delay: "0.5s", dur: "6s" },
-                        { left: "20%", w: 35, h: 130, delay: "2s", dur: "8s" },
-                        { left: "75%", w: 55, h: 200, delay: "1.5s", dur: "7.5s" },
-                        { left: "81%", w: 45, h: 300, delay: "0.8s", dur: "6.5s" },
-                        { left: "87%", w: 60, h: 180, delay: "2.5s", dur: "9s" },
-                        { left: "93%", w: 35, h: 240, delay: "0.3s", dur: "7s" },
-                    ].map((b, i) => (
-                        <div
-                            key={i}
-                            className="building"
-                            style={{
-                                left: b.left,
-                                width: b.w,
-                                height: b.h,
-                                animationDelay: b.delay,
-                                animationDuration: b.dur,
-                            }}
-                        />
-                    ))}
-                </div>
-
-
-                {[
-                    { top: "20%", left: "15%", delay: "0s", dur: "4s", size: 28 },
-                    { top: "35%", left: "78%", delay: "1.5s", dur: "5s", size: 22 },
-                    { top: "55%", left: "25%", delay: "0.8s", dur: "3.5s", size: 18 },
-                    { top: "25%", left: "65%", delay: "2s", dur: "4.5s", size: 24 },
-                ].map((pin, i) => (
-                    <div
-                        key={i}
-                        className="pin"
-                        style={{
-                            top: pin.top,
-                            left: pin.left,
-                            zIndex: 5,
-                            animationDelay: pin.delay,
-                            animationDuration: pin.dur,
-                        }}
-                    >
-                        <svg width={pin.size} height={pin.size} viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-                                fill="rgba(147,197,253,0.7)"
-                                stroke="rgba(147,197,253,0.9)"
-                                strokeWidth="1"
-                            />
-                            <circle cx="12" cy="9" r="2.5" fill="white" opacity="0.9" />
-                        </svg>
-                    </div>
-                ))}
+        <div className="float-buildings" style={{ zIndex: 4 }}>
+          {[
+            { left: "3%", w: 60, h: 220, delay: "0s", dur: "7s" },
+            { left: "9%", w: 40, h: 160, delay: "1s", dur: "9s" },
+            { left: "14%", w: 50, h: 280, delay: "0.5s", dur: "6s" },
+            { left: "20%", w: 35, h: 130, delay: "2s", dur: "8s" },
+            { left: "75%", w: 55, h: 200, delay: "1.5s", dur: "7.5s" },
+            { left: "81%", w: 45, h: 300, delay: "0.8s", dur: "6.5s" },
+            { left: "87%", w: 60, h: 180, delay: "2.5s", dur: "9s" },
+            { left: "93%", w: 35, h: 240, delay: "0.3s", dur: "7s" },
+          ].map((b, i) => (
+            <div
+              key={i}
+              className="building"
+              style={{
+                left: b.left,
+                width: b.w,
+                height: b.h,
+                animationDelay: b.delay,
+                animationDuration: b.dur,
+              }}
+            />
+          ))}
+        </div>
 
 
-                <div className="hero-content" style={{ zIndex: 10 }}>
+        {[
+          { top: "20%", left: "15%", delay: "0s", dur: "4s", size: 28 },
+          { top: "35%", left: "78%", delay: "1.5s", dur: "5s", size: 22 },
+          { top: "55%", left: "25%", delay: "0.8s", dur: "3.5s", size: 18 },
+          { top: "25%", left: "65%", delay: "2s", dur: "4.5s", size: 24 },
+        ].map((pin, i) => (
+          <div
+            key={i}
+            className="pin"
+            style={{
+              top: pin.top,
+              left: pin.left,
+              zIndex: 5,
+              animationDelay: pin.delay,
+              animationDuration: pin.dur,
+            }}
+          >
+            <svg width={pin.size} height={pin.size} viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                fill="rgba(147,197,253,0.7)"
+                stroke="rgba(147,197,253,0.9)"
+                strokeWidth="1"
+              />
+              <circle cx="12" cy="9" r="2.5" fill="white" opacity="0.9" />
+            </svg>
+          </div>
+        ))}
 
 
-                    <h1 className="hero-title">
-                        Find Your{" "}
-                        <span className="accent">Dream Home</span>
-                        <br />
-                        in Mumbai &amp; Navi Mumbai
-                    </h1>
-
-                    <p className="hero-subtitle">
-                        <strong>Welcome Realty LLP</strong> — Trusted Real Estate Experts helping
-                        you <strong>Buy</strong>, <strong>Sell</strong>, and <strong>Rent</strong>{" "}
-                        with complete confidence since 2009.
-                    </p>
+        <div className="hero-content" style={{ zIndex: 10 }}>
 
 
-                    <div className="cta-group">
-                        <a href="#properties" className="btn-primary">
-                            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                                <polyline points="9,22 9,12 15,12 15,22" />
-                            </svg>
-                            View Properties
-                        </a>
-                        <a href="#contact" className="btn-secondary">
-                            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.14a16 16 0 006.95 6.95l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                            </svg>
-                            Contact Us Today
-                        </a>
-                    </div>
-                </div>
+          <h1 className="hero-title">
+            Find Your{" "}
+            <span className="accent">Dream Home</span>
+            <br />
+            in Mumbai &amp; Navi Mumbai
+          </h1>
+
+          <p className="hero-subtitle">
+            <strong>Welcome Realty LLP</strong> — Trusted Real Estate Experts helping
+            you <strong>Buy</strong>, <strong>Sell</strong>, and <strong>Rent</strong>{" "}
+            with complete confidence since 2009.
+          </p>
 
 
-                <div className="scroll-indicator" style={{ zIndex: 10 }}>
-                    <span className="scroll-text">Scroll</span>
-                    <div className="scroll-line" />
-                </div>
+          <div className="cta-group">
+            <a href="#properties" className="btn-primary">
+              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                <polyline points="9,22 9,12 15,12 15,22" />
+              </svg>
+              View Properties
+            </a>
+            <a href="#contact" className="btn-secondary">
+              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.14a16 16 0 006.95 6.95l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+              </svg>
+              Contact Us Today
+            </a>
+          </div>
+        </div>
 
 
-                <div className="stats-bar" style={{ zIndex: 10 }}>
-                    {[
-                        { value: "2,400+", label: "Properties Sold" },
-                        { value: "15+", label: "Years of Trust" },
-                        { value: "98%", label: "Client Satisfaction" },
-                        { value: "₹1,200Cr+", label: "Total Transactions" },
-                    ].map((s, i) => (
-                        <div className="stat-item" key={i}>
-                            <span className="stat-value">{s.value}</span>
-                            <span className="stat-label">{s.label}</span>
-                        </div>
-                    ))}
-                </div>
+        <div className="scroll-indicator" style={{ zIndex: 10 }}>
+          <span className="scroll-text">Scroll</span>
+          <div className="scroll-line" />
+        </div>
 
-            </section>
-        </>
-    );
+
+
+      </section>
+    </>
+  );
 };
 
 export default Hero;

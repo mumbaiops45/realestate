@@ -44,7 +44,8 @@ const Footer = () => {
                 </div>
             </div>
             <div className="mt-10 border-t border-gray-700 pt-4 text-center text-gray-400 text-sm">
-                © 2026 Welcome Realty LLP. All rights reserved. | <a href="#" className="hover:text-blue-400">Privacy Policy</a> | <a href="#" className="hover:text-blue-400">Terms</a>
+                © 2026 nakshatranamahacreations Pvt.Ltd 
+                
             </div>
         </footer>
     )
