@@ -258,10 +258,10 @@ const Footer = () => {
                   placeholder="Your email"
                   className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder:text-gray-400"
                 />
-                <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition flex items-center justify-center gap-2 font-medium">
+               {/* <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition flex items-center justify-center gap-2 font-medium">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                   Subscribe
-                </button>
+                </button> */}
               </form>
               <div className="mt-6 pt-4 border-t border-white/10">
                 <p className="text-gray-400 text-xs">📍 Office: Bandra East, Mumbai - 400051</p>
