@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="mt-10 border-t border-gray-700 pt-4 text-center text-gray-400 text-sm">
-                © 2026 nakshatranamahacreations Pvt.Ltd 
+                &copy; 2026 nakshatranamahacreations Pvt.Ltd 
                 
             </div>
         </footer>
