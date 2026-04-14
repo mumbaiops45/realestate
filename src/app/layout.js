@@ -7,8 +7,8 @@ import Footer from "./Component/Footer";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="min-h-full flex flex-col">
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Navbar/>
         {children}
         <Footer/>

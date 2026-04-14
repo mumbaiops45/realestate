@@ -48,7 +48,7 @@ const properties = [
     type: "For Sale",
   },
    {
-    id: 1,
+    id: 6,
     title: "Luxury 2BHK Apartment",
     location: "Bandra West, Mumbai",
     price: "₹1.8 Cr",
@@ -57,7 +57,7 @@ const properties = [
     type: "For Sale",
   },
   {
-    id: 2,
+    id: 7,
     title: "Sea View 3BHK Flat",
     location: "Worli, Mumbai",
     price: "₹4.5 Cr",
@@ -66,7 +66,7 @@ const properties = [
     type: "For Sale",
   },
   {
-    id: 3,
+    id: 8,
     title: "Modern Studio Apartment",
     location: "Navi Mumbai",
     price: "₹75 Lakhs",
@@ -75,7 +75,7 @@ const properties = [
     type: "For Rent",
   },
   {
-    id: 4,
+    id: 9,
     title: "Premium 4BHK Penthouse",
     location: "Powai, Mumbai",
     price: "₹6.2 Cr",
