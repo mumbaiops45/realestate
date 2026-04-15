@@ -2,67 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
-
-
-const values = [
-    {
-        title: "Integrity",
-        desc: "We believe in complete honesty and ethical conduct in every interaction. Every decision we make is guided by trust, fairness, and long-term relationships rather than short-term gains."
-    },
-    {
-        title: "Transparency",
-        desc: "We maintain clear and open communication throughout the entire process. From pricing to execution, everything is shared upfront so you always stay informed and confident."
-    },
-    {
-        title: "Excellence",
-        desc: "We are committed to delivering top-tier quality in every service we offer. Our focus is on continuous improvement, attention to detail, and exceeding expectations consistently."
-    },
-    {
-        title: "Customer Commitment",
-        desc: "Your goals become our mission. We work closely with you to understand your needs and ensure a smooth, supportive, and result-driven experience at every stage."
-    },
-    {
-        title: "Reliability",
-        desc: "You can depend on us for consistent performance and dependable support. We stay accountable and responsive, ensuring you are never left uncertain or unsupported."
-    }
-];
-
-
-const data = [
-    {
-        id: "01",
-        title: "BUYING",
-        desc: "Enjoy serene waterfront living with contemporary architecture, spacious interiors, and panoramic marina skyline views, offering comfort, elegance, and a perfect balance of luxury and tranquility.",
-    },
-    {
-        id: "02",
-        title: "SECURE",
-        desc: "Secure your investments with trusted guidance, verified opportunities, and transparent processes that protect your assets while helping you achieve steady long-term financial growth.",
-    },
-    {
-        id: "03",
-        title: "ASSETS",
-        desc: "Build strong assets through smart investments, careful planning, and expert guidance that help grow your financial portfolio, protect your wealth, and support long-term stability.",
-    },
-];
-
-const testimonials = [
-    {
-        text: "The modular approach gave us flexibility we didn’t expect.",
-        name: "Sophie L.",
-        role: "Custom Modular Project"
-    },
-    {
-        text: "We wanted a sustainable home without delays.",
-        name: "Daniel M.",
-        role: "Tiny Home Client"
-    },
-    {
-        text: "Every detail felt intentional and premium.",
-        name: "Sophie L.",
-        role: "Custom Modular Project"
-    }
-];
+import {  values, data , testimonials } from "../data/data";
 
 
 
@@ -262,15 +202,15 @@ const Page = () => {
                 </div>
             </div>
 
-
-            <section className=" bg-blue-50 max-w-6xl mx-auto  py-10 flex flex-col lg:flex-row gap-10">
-                <div className="lg:w-[30%] w-full  flex items-center">
+             
+            <section className=" bg-blue-50  py-10 flex flex-col lg:flex-row gap-10">
+                <div className="lg:w-[30%]  pl-[60px] flex items-center">
                     <h2 className="text-4xl md:text-5xl font-light leading-tight">
                         Explore High-Value Property Investments
                     </h2>
                 </div>
 
-                <div className="lg:w-[70%] w-full space-y-6">
+                <div className="lg:w-[70%] w-full pl-[60px] space-y-6">
 
                     {data.map((item, index) => (
                         <div key={index} className="group cursor-pointer">
@@ -338,13 +278,13 @@ const Page = () => {
             </section>
 
 
-            <section className="max-w-6xl mx-auto h-screen bg-[url('/home22.jpg')] bg-cover bg-center relative">
+            <section className=" h-screen bg-[url('/home22.jpg')] bg-cover bg-center relative">
 
-                <div className="absolute inset-0 bg-black/40"></div>
+                <div className="absolute  inset-0 bg-black/40"></div>
 
-                <div className="absolute bottom-6 left-6 z-10">
+                <div className="absolute pl-[60px] bottom-6 left-6 z-10">
 
-                    <div className="bg-black/60 p-6 w-[440px] h-[320px] rounded-xl shadow-lg relative flex flex-col">
+                    <div className="bg-black/60  p-6 w-[440px] h-[320px] rounded-xl shadow-lg relative flex flex-col">
 
                         <div className="flex flex-col  justify-center  flex-1">
                             <p className="text-lg text-white mb-5 leading-relaxed font-medium">
@@ -361,7 +301,7 @@ const Page = () => {
                         </div>
 
 
-                        <div className="absolute bottom-4 right-4 flex gap-4 text-white">
+                        <div className="absolute bottom-12  right-10 flex gap-4 text-white">
                             <button onClick={prevSlide} className="hover:scale-110 transition">
                                 <AiOutlineArrowLeft className="text-xl cursor-pointer" />
                             </button>

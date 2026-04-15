@@ -157,8 +157,8 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
   { name: 'Properties', href: '#' },
-  { name: 'Services', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Services', href: '/service' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 function classNames(...classes) {
