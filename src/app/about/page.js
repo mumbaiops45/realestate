@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
-import {  values, data , testimonials } from "../data/data";
+import { values, data, testimonials } from "../data/data";
 
 
 
@@ -147,41 +147,40 @@ const Page = () => {
                                 To be recognized as one of Mumbai’s most trusted real estate partners, delivering consistent value and exceptional client experiences.
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
 
+            
+            <div className="bg-[#d3d6e0] "> 
+                <div ref={ref} className="max-w-6xl  mx-auto mb-32">
+                    <h2 className="text-3xl font-bold text-center  mb-10">
+                        Our Core Values
+                    </h2>
 
+                    <div className="relative h-[200vh]">
+                        {values.map((item, index) => {
+                            const y = useTransform(
+                                scrollYProgress,
+                                [0, 1],
+                                [index * 10, -index * 10]
+                            );
 
-            <div ref={ref} className="max-w-6xl mx-auto mb-32">
-                <h2 className="text-3xl font-bold text-center mb-10">
-                    Our Core Values
-                </h2>
+                            return (
+                                <motion.div
+                                    key={index}
+                                    style={{ y }}
 
-                <div className="relative h-[200vh]">
-                    {values.map((item, index) => {
-                        const y = useTransform(
-                            scrollYProgress,
-                            [0, 1],
-                            [index * 50, -index * 200]
-                        );
-
-                        return (
-                            <motion.div
-                                key={index}
-                                style={{ y }}
-                                
-                                className="sticky top-20 mx-auto w-full max-w-2xl mb-6 p-6 border rounded-xl bg-blue-50 shadow-lg"
-                            >
-                                <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                                <p>{item.desc}</p>
-                            </motion.div>
-                        );
-                    })}
+                                    className="sticky top-20 mx-auto w-full max-w-2xl mb-6 p-6 border rounded-xl bg-blue-50 shadow-lg"
+                                >
+                                    <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
+                                    <p>{item.desc}</p>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
-
 
             <div className="max-w-6xl mx-auto bg-black text-white rounded-2xl p-10 grid md:grid-cols-4 gap-8 text-center mb-16">
                 <div>
@@ -202,7 +201,7 @@ const Page = () => {
                 </div>
             </div>
 
-             
+
             <section className=" bg-blue-50  py-10 flex flex-col lg:flex-row gap-10">
                 <div className="lg:w-[30%]  pl-[60px] flex items-center">
                     <h2 className="text-4xl md:text-5xl font-light leading-tight">

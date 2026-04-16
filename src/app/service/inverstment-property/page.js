@@ -53,7 +53,6 @@ const Page = () => {
 
       <section className="bg-gray-100 py-20 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
-
           <div className="lg:sticky lg:top-20 h-fit">
             <p className="uppercase tracking-widest text-sm border border-gray-400 inline-block px-4 py-2 rounded-full text-gray-600">
               Our Workflow
