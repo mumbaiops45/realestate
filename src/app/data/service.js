@@ -43,8 +43,8 @@ export const services = [
         content:
             "In-depth reports and insights to support smart property decisions",
         image1: "/analysis.webp",
-        image1: "/market.webp",
-        route: "/service/rental-property-management",
+        image2: "/market.webp",
+        route: "/service/real-estate-market-analysis",
     },
 ]
 
@@ -119,7 +119,7 @@ export const sales = [
 
 export const rental = [
   {
-  src: '/house1.jpg',
+  src: '/house.jpg',
   title: 'Custom Home Design Consultation',
   desc: 'Bringing your dream home vision to life with expert design advice.'
   },

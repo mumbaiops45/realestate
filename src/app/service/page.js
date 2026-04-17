@@ -106,8 +106,8 @@ const Page = () => {
                                         </p>
 
                                         <button
-                                          onClick={() => router.push(item.route)}
-                                         className="mt-4 w-fit px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition" >
+                                            onClick={() => router.push(item.route)}
+                                            className="mt-4 w-fit px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition" >
                                             See Service Details
                                         </button>
                                     </div>

@@ -15,7 +15,7 @@ const leftItems = [
     "Redefining",
     "Real Estate.",
     "Modern Living,",
-    "Reimagined.",
+    "Re imagined.",
     "India’s most trusted destination for premium homes.",
 ];
 
