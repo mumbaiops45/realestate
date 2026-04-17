@@ -151,8 +151,8 @@ const Page = () => {
                 </div>
             </div>
 
-            
-            <div className="bg-[#d3d6e0] "> 
+
+            <div className="bg-[#d3d6e0] ">
                 <div ref={ref} className="max-w-6xl  mx-auto mb-32">
                     <h2 className="text-3xl font-bold text-center  mb-10">
                         Our Core Values
@@ -277,41 +277,54 @@ const Page = () => {
             </section>
 
 
-            <section className=" h-screen bg-[url('/home22.jpg')] bg-cover bg-center relative">
 
-                <div className="absolute  inset-0 bg-black/40"></div>
+            <section className="h-screen bg-[url('/home22.jpg')] bg-cover bg-center relative">
 
-                <div className="absolute pl-[60px] bottom-6 left-6 z-10">
 
-                    <div className="bg-black/60  p-6 w-[440px] h-[320px] rounded-xl shadow-lg relative flex flex-col">
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
 
-                        <div className="flex flex-col  justify-center  flex-1">
-                            <p className="text-lg text-white mb-5 leading-relaxed font-medium">
+
+                <div className="relative z-10 h-full flex items-end sm:items-center px-4 sm:px-10 pb-10 sm:pb-0">
+
+                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 
+                    p-5 sm:p-8 
+                    w-full sm:max-w-md md:max-w-lg 
+                    rounded-2xl shadow-2xl 
+                    flex flex-col justify-between">
+
+
+                        <div>
+                            <p className="text-base sm:text-lg md:text-xl text-white mb-4 leading-relaxed font-medium">
                                 “{current.text}”
                             </p>
 
-                            <h4 className="font-semibold text-white text-lg">
+                            <h4 className="font-semibold text-white text-lg sm:text-xl">
                                 {current.name}
                             </h4>
 
-                            <span className="text-sm text-white/70 mt-1">
+                            <span className="text-xs sm:text-sm text-white/70 mt-1 block">
                                 {current.role}
                             </span>
                         </div>
 
 
-                        <div className="absolute bottom-12  right-10 flex gap-4 text-white">
-                            <button onClick={prevSlide} className="hover:scale-110 transition">
-                                <AiOutlineArrowLeft className="text-xl cursor-pointer" />
+                        <div className="flex justify-end gap-4 mt-6 text-white">
+                            <button
+                                onClick={prevSlide}
+                                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition hover:scale-110"
+                            >
+                                <AiOutlineArrowLeft className="text-lg sm:text-xl" />
                             </button>
 
-                            <button onClick={nextSlide} className="hover:scale-110 transition">
-                                <AiOutlineArrowRight className="text-xl cursor-pointer" />
+                            <button
+                                onClick={nextSlide}
+                                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition hover:scale-110"
+                            >
+                                <AiOutlineArrowRight className="text-lg sm:text-xl" />
                             </button>
                         </div>
 
                     </div>
-
                 </div>
             </section>
 

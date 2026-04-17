@@ -168,7 +168,7 @@ const Footer = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            {/* Logo Section */}
+          
             <div className="hover:-translate-y-1 transition duration-300">
               <div className="flex items-center gap-3 mb-4">
                 <div className="relative w-10 h-10 rounded-lg bg-white/5 p-1 shadow-inner">
@@ -189,7 +189,7 @@ const Footer = () => {
                 Premium real estate solutions tailored for modern living.
               </p>
 
-              {/* Social Icons */}
+              
               <div className="flex gap-4 mt-4">
                 <a href="#" className="hover:scale-110 transition">🌐</a>
                 <a href="#" className="hover:scale-110 transition">📘</a>
@@ -197,7 +197,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
+           
             <div className="hover:-translate-y-1 transition duration-300">
               <h3 className="text-lg font-semibold mb-4 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:w-8 after:h-0.5 after:bg-blue-500">
                 Quick Links
@@ -217,7 +217,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact */}
+           
             <div className="hover:-translate-y-1 transition duration-300">
               <h3 className="text-lg font-semibold mb-4 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:w-8 after:h-0.5 after:bg-blue-500">
                 Contact Us
@@ -235,7 +235,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Newsletter */}
+            
             <div className="hover:-translate-y-1 transition duration-300">
               <h3 className="text-lg font-semibold mb-4 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-6px] after:w-8 after:h-0.5 after:bg-blue-500">
                 Stay Updated
@@ -263,7 +263,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Bottom Bar */}
+         
           <div className="mt-12 pt-6 border-t border-white/10 relative flex flex-col md:flex-row justify-between items-center gap-3 text-gray-400 text-sm">
             
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
@@ -291,7 +291,7 @@ const Footer = () => {
         </div>
       </footer>
 
-      {/* Scroll To Top Button */}
+     
       {showScrollBtn && (
         <button
           onClick={scrollToTop}
