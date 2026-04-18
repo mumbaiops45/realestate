@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -20,18 +21,36 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
 
   const isActive = (href) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navBg = scrolled ? "bg-white shadow-md" : "bg-transparent";
+  const textColor = scrolled ? "text-black" : "text-white";
+  const hoverColor = scrolled ? "hover:text-blue-500" : "hover:text-blue-300";
+
   return (
-    <Disclosure as="nav" className="fixed top-0 left-0 z-50 w-full bg-white shadow-sm">
+
+    <Disclosure
+      as="nav"
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${navBg}`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
 
-       
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
@@ -45,7 +64,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          
           <div className="hidden sm:flex sm:flex-1 sm:justify-center">
             <div className="flex space-x-6">
               {navigation.map((item) => {
@@ -59,7 +77,7 @@ export default function Navbar() {
                     className={classNames(
                       active
                         ? "text-blue-600 border-b-2 border-blue-600"
-                        : "text-gray-700 hover:text-blue-500 hover:border-b-2 hover:border-blue-400",
+                        : `${textColor} ${hoverColor}   hover:border-b-2  hover:border-blue-400`,
                       "px-3 py-2 text-sm font-medium transition-all duration-200"
                     )}
                   >
@@ -70,7 +88,7 @@ export default function Navbar() {
             </div>
           </div>
 
-         
+
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
             <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
               <span className="sr-only">Open main menu</span>
@@ -88,7 +106,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      
+
       <Disclosure.Panel className="sm:hidden">
         <div className="space-y-1 px-2 pb-3 pt-2">
           {navigation.map((item) => {

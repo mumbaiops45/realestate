@@ -5,6 +5,7 @@ import Choose from "./Component/Choose";
 import Testonomial from "./Component/Testimonials";
 import Faq from "./Component/Faq";
 import Cta from "./Component/Cta";
+import WeCreate from "./Component/WeCreate";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <About/>
       <Feature/>
       <Choose />
+      <WeCreate/>
       <Testonomial/>
       <Faq/>
       <Cta/>

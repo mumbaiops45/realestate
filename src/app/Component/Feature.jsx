@@ -135,17 +135,19 @@ const Feature = () => {
 
   return (
    
-    <section ref={sectionRef} className="relative h-[300vh] bg-gray-50">
-      
+    // <section ref={sectionRef} className="relative h-[300vh] bg-gray-50">
+     <section ref={sectionRef}  className="relative h-[300vh] bg-[url('/realestateimg.jpg')] bg-cover bg-center">
+         <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+
       <div className="sticky top-0 h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-[60px] flex flex-col lg:flex-row gap-12 w-full">
 
          
           <div className="lg:w-1/3">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-800">
+            <h2 className="text-3xl md:text-5xl font-bold text-white">
               Featured Properties
             </h2>
-            <p className="text-gray-500 mt-4 text-lg">
+            <p className="text-white mt-4 text-lg">
               Explore the best homes curated for you in Mumbai & Navi Mumbai
             </p>
           </div>
@@ -162,7 +164,7 @@ const Feature = () => {
               {properties.map((property) => (
                 <div
                   key={property.id}
-                  className="min-w-[280px] sm:min-w-[300px] lg:min-w-[320px] bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 group"
+                  className="min-w-[280px] sm:min-w-[300px] lg:min-w-[320px] bg-blue-500/10 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 group"
                 >
                   <div className="relative overflow-hidden">
                     <img
@@ -176,10 +178,10 @@ const Feature = () => {
                   </div>
 
                   <div className="p-5">
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    <h3 className="text-lg font-semibold text-white">
                       {property.title}
                     </h3>
-                    <p className="text-gray-500 text-sm mt-1">
+                    <p className="text-white text-sm mt-1">
                       📍 {property.location}
                     </p>
 

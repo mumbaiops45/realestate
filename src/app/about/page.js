@@ -59,6 +59,7 @@ const Page = () => {
 
     return (
         <div className="bg-white text-gray-800 ">
+            
             <div className="bg-white text-gray-800">
                 <div className="relative w-full  h-screen">
                     <img
