@@ -112,6 +112,15 @@ const Choose = () => {
 
     ];
 
+    const featureImages = [
+    "/Sales.webp",
+    "/market.webp",
+    "/propertysold.jpg",
+    "/salehome.jpg",
+    "/consluting.webp",
+    "/investme.webp",
+];
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -152,7 +161,7 @@ const Choose = () => {
             </div>
 
           
-            <div
+            {/* <div
                 className="group relative w-[500px] bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 h-56 flex flex-col justify-between transition duration-500 hover:scale-105 hover:bg-white/20 hover:shadow-2xl"
             >
                 <div className='text-blue-400 group-hover:text-white transition'>
@@ -178,8 +187,49 @@ const Choose = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
             
+            <div className="flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
+
+    {/* LEFT CARD */}
+    <div
+        className="group relative w-full md:w-[500px] bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 h-56 flex flex-col justify-between transition duration-500 hover:scale-105 hover:bg-white/20 hover:shadow-2xl"
+    >
+        <div className='text-blue-400 group-hover:text-white transition'>
+            {item.icon}
+        </div>
+
+        <div>
+            <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+
+            <p className="text-gray-300 text-sm leading-relaxed">
+                {item.description}
+            </p>
+
+            <div className="flex items-center justify-between text-white mt-4">
+                <ArrowLeftOutlined
+                    onClick={handlePrev}
+                    className="cursor-pointer hover:text-blue-400 transition"
+                />
+
+                <ArrowRightOutlined
+                    onClick={handleNext}
+                    className="cursor-pointer hover:text-blue-400 transition"
+                />
+            </div>
+        </div>
+    </div>
+
+    {/* RIGHT IMAGE */}
+    <div className="w-full md:w-[450px] h-56 md:h-[320px] rounded-2xl overflow-hidden shadow-xl transition duration-500">
+        <img
+            src={featureImages[currentIndex]}
+            alt="feature"
+            className="w-full h-full object-cover transition duration-700"
+        />
+    </div>
+
+</div>
         </section>
 
     );

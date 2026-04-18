@@ -53,7 +53,7 @@ const About = () => {
                     className="lg:col-span-3"
                 >
                     <p className="text-xs tracking-[0.35em] text-gray-400 uppercase">
-                        About Pody
+                        ABOUT US
                     </p>
                 </motion.div>
 
@@ -66,7 +66,7 @@ const About = () => {
                         viewport={{ once: true, amount: 0.3 }}
                         className="text-gray-600 text-lg leading-relaxed"
                     >
-                        Pody specializes in crafting modular and tiny homes tailored for contemporary living.
+                        We specializes in crafting modular and tiny homes tailored for contemporary living.
                         Our efficient process, eco-friendly materials, and precise construction simplify the
                         journey of owning a home that fits your lifestyle without unnecessary complexity.
                     </motion.p>
