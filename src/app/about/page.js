@@ -3,6 +3,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import { values, data, testimonials } from "../data/data";
+import { Noto_Sans } from "next/font/google";
+import { useRouter } from "next/navigation";
+
+const notoSans = Noto_Sans({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+});
 
 
 
@@ -12,6 +19,7 @@ const Page = () => {
     const [started, setStarted] = useState(false);
     const [index, setIndex] = useState(0);
     const ref = useRef(null);
+    const router = useRouter();
 
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -57,25 +65,62 @@ const Page = () => {
 
     const current = testimonials[index];
 
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+            },
+        },
+    };
+
+    const card = {
+        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        show: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut",
+            },
+        },
+    };
+
     return (
         <div className="bg-white text-gray-800 ">
-            
+
+
             <div className="bg-white text-gray-800">
                 <div className="relative w-full  h-screen">
-                    <img
+                    <motion.img
                         src="home.jpg"
                         alt="Hero Image"
                         className="w-full h-full object-cover"
+                        initial={{ scale: 1.1 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 2, ease: "easeOut" }}
+
                     />
                     <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
 
-                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                        <motion.h1 className="text-3xl md:text-5xl font-bold text-white mb-4"
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, delay: 0.5 }}
+                        >
                             Crafting Exceptional Living Experiences
-                        </h1>
+                        </motion.h1>
 
-                        <p className="text-base md:text-lg text-gray-200 max-w-3xl">
+                        <motion.p
+                            className="text-base md:text-lg text-gray-200 max-w-3xl"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, delay: 0.8 }}
+                        >
                             At Welcome Realty LLP, we go beyond property transactions — creating spaces where life thrives and investments grow across Mumbai & Navi Mumbai.
-                        </p>
+                        </motion.p>
                     </div>
                 </div>
             </div>
@@ -154,36 +199,47 @@ const Page = () => {
 
 
             <div className="bg-[#d3d6e0] ">
-                <div ref={ref} className="max-w-6xl  mx-auto mb-32">
-                    <h2 className="text-3xl font-bold text-center  mb-10">
+                <div ref={ref} className="max-w-6xl mx-auto px-6 py-20">
+                    <h2 className="text-3xl font-bold text-left  mb-10">
                         Our Core Values
                     </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div className="relative h-[200vh]">
+                            {values.map((item, index) => {
+                                const y = useTransform(
+                                    scrollYProgress,
+                                    [0, 1],
+                                    [index * 20, -index * 20]
+                                );
 
-                    <div className="relative h-[200vh]">
-                        {values.map((item, index) => {
-                            const y = useTransform(
-                                scrollYProgress,
-                                [0, 1],
-                                [index * 10, -index * 10]
-                            );
-
-                            return (
-                                <motion.div
-                                    key={index}
-                                    style={{ y }}
-
-                                    className="sticky top-20 mx-auto w-full max-w-2xl mb-6 p-6 border rounded-xl bg-blue-50 shadow-lg"
-                                >
-                                    <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                                    <p>{item.desc}</p>
-                                </motion.div>
-                            );
-                        })}
+                                return (
+                                    <motion.div
+                                        key={index}
+                                        style={{ y }}
+                                        className="sticky top-24 w-full mb-6 p-6 border rounded-xl bg-blue-50 shadow-lg"
+                                    >
+                                        <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
+                                        <p>{item.desc}</p>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+                        <div className="hidden md:block relative">
+                            <div className="sticky top-24">
+                                <img
+                                    src="/realestate.jpg"
+                                    alt="Real Estate"
+                                    className="w-full h-[450px] object-cover rounded-xl shadow-xl"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="max-w-6xl mx-auto bg-black text-white rounded-2xl p-10 grid md:grid-cols-4 gap-8 text-center mb-16">
+
+
+            <div className="max-w-8xl mx-auto bg-black text-white  p-10 grid md:grid-cols-4 gap-8 text-center ">
                 <div>
                     <h3 className="text-3xl font-bold">10+</h3>
                     <p>Years Experience</p>
@@ -238,49 +294,79 @@ const Page = () => {
 
 
 
-            <section className="py-16 bg-white text-center">
+            <section className="py-16 bg-white text-center overflow-hidden">
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <h2 className="text-3xl font-bold text-gray-800">Our Team</h2>
+                    <p className="text-gray-500 mt-2">
+                        Meet the talented people behind our success
+                    </p>
+                </motion.div>
 
-
-                <h2 className="text-3xl font-bold text-gray-800">Our Team</h2>
-                <p className="text-gray-500 mt-2">Meet the talented people behind our success</p>
-
-
-                <button className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                >
                     Meet All Team
-                </button>
+                </motion.button>
 
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className="mt-12 flex flex-wrap justify-evenly gap-8 px-4"
+                >
+                    {[
+                        {
+                            img: "lead.jpg",
+                            name: "Rahul Sharma",
+                            role: "Founder & Design Director",
+                        },
+                        {
+                            img: "lead1.jpg",
+                            name: "Amit Verma",
+                            role: "Head of Modular Engineering",
+                        },
+                        {
+                            img: "lead2.jpg",
+                            name: "Vikram Singh",
+                            role: "Connstruction & Installation Lead",
+                        },
+                    ].map((member, i) => (
+                        <motion.div
+                            key={i}
+                            variants={card}
+                            whileHover={{
+                                y: -12,
+                                scale: 1.03,
+                                boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
+                            }}
+                            className="bg-white w-64 p-5 rounded-xl shadow-md transition"
+                        >
+                            <img
+                                src={member.img}
+                                alt={member.name}
+                                className="w-full h-64 object-cover rounded-lg"
+                            />
 
-                <div className="mt-12 flex flex-wrap justify-evenly gap-8 px-4">
+                            <h3 className="mt-4 text-lg font-semibold text-gray-800">{member.name}</h3>
+                            <p className="text-gray-500 text-sm">{member.role}</p>
+                        </motion.div>
+                    ))
+                    }
 
-
-                    <div className="bg-white w-64 p-5 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
-                        <img src="lead.jpg" alt="Founder" className="w-full h-64 object-cover rounded-lg" />
-                        <h3 className="mt-4 text-lg font-semibold text-gray-800">Rahul Sharma</h3>
-                        <p className="text-gray-500 text-sm">Founder & Design Director</p>
-                    </div>
-
-
-                    <div className="bg-white w-64 p-5 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
-                        <img src="lead1.jpg" alt="Engineering Head" className="w-full h-64 object-cover rounded-lg" />
-                        <h3 className="mt-4 text-lg font-semibold text-gray-800">Amit Verma</h3>
-                        <p className="text-gray-500 text-sm">Head of Modular Engineering</p>
-                    </div>
-
-
-                    <div className="bg-white w-64 p-5 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
-                        <img src="lead2.jpg" alt="Construction Lead" className="w-full h-64 object-cover rounded-lg" />
-                        <h3 className="mt-4 text-lg font-semibold text-gray-800">Vikram Singh</h3>
-                        <p className="text-gray-500 text-sm">Construction & Installation Lead</p>
-                    </div>
-
-                </div>
+                </motion.div>
 
             </section>
 
 
-
             <section className="h-screen bg-[url('/home22.jpg')] bg-cover bg-center relative">
-
 
                 <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
 
@@ -330,48 +416,48 @@ const Page = () => {
             </section>
 
 
-            <section className="max-w-6xl mx-auto bg-white px-6 py-16 md:py-24">
+            <section className="max-w-6xl mx-auto bg-white px-6 py-20 md:py-28">
                 <div className="max-w-7xl mx-auto">
 
-                    <h1 className="text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight text-black">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className={`${notoSans.className}text-3xl md:text-4xl font-bold uppercase tracking-tight leading-tight text-black`}
+                    >
                         Start your modular home journey with ease and intelligent design.
-                    </h1>
+                    </motion.h1>
 
 
-                    <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
 
+                        <motion.div whileHover={{ scale: 1.05 }}>
+                            <img src="/imghouse.jpg" className="rounded-2xl shadow-xl h-64 w-full object-cover" />
+                        </motion.div>
 
-                        <div className="md:col-span-1">
-                            <img
-                                src="/imghouse.jpg"
-                                alt="House 1"
-                                className="rounded-xl w-full h-64 object-cover shadow-lg"
-                            />
-                        </div>
+                        <motion.div whileHover={{ scale: 1.05 }}>
+                            <img src="/house2.jpg" className="rounded-2xl shadow-xl h-80 w-full object-cover" />
+                        </motion.div>
 
+                        <motion.div whileHover={{ scale: 1.05 }}>
+                            <img src="/house3.jpg" className="rounded-2xl shadow-xl h-96 w-full object-cover" />
+                        </motion.div>
 
-                        <div className="md:col-span-1">
-                            <img
-                                src="/house2.jpg"
-                                alt="House 2"
-                                className="rounded-xl w-full h-80 object-cover shadow-lg"
-                            />
-                        </div>
-                        <div className="md:col-span-1">
-                            <img
-                                src="/house3.jpg"
-                                alt="House 3"
-                                className="rounded-xl w-full h-96 object-cover shadow-lg"
-                            />
-                        </div>
                     </div>
 
 
-                    <div className="mt-12 flex justify-center">
-                        <button className="bg-black text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-800 transition duration-300">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="mt-16 flex justify-center"
+                    >
+                        <button
+                            onClick={() => router.push("/contact")}
+                            className="px-10 py-4 rounded-full bg-black text-white hover:bg-gray-800 transition">
                             Start Building Your Home
                         </button>
-                    </div>
+                    </motion.div>
 
                 </div>
             </section>

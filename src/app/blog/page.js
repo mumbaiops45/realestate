@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef } from "react"
+import React, {useState,useEffect, useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { PhoneOutlined } from "@ant-design/icons"
 
@@ -8,8 +8,28 @@ const Page = () => {
   const heroRef = useRef(null)
   const secondRef = useRef(null)
   const ctaRef = useRef(null)
+   const ref = useRef(null);
+    const [visible, setVisible] = useState(false);
 
+   useEffect(() => {
+          const observer = new IntersectionObserver(
+              ([entry]) => {
   
+                  if (entry.isIntersecting) {
+                      setVisible(true);
+                  } else {
+  
+                      setVisible(false);
+                  }
+              },
+              { threshold: 0.3 }
+          );
+  
+          if (ref.current) observer.observe(ref.current);
+  
+          return () => observer.disconnect();
+      }, []);
+
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -53,6 +73,8 @@ const Page = () => {
           style={{
             backgroundImage: "url('/blog1.jpg')",
             y: heroBgY,
+            transform: visible ? "scale(1.05)" : "scale(1.1)",
+             transition: "transform 1.2s ease-out",
           }}
         />
 

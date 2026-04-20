@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 
 const Page = () => {
-    const [activeIndex, setActiveIndex] = useState(2)
+    const [activeIndex, setActiveIndex] = useState(2);
 
     const toggle = (index) => {
         setActiveIndex(index === activeIndex ? null : index)
