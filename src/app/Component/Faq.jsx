@@ -198,11 +198,13 @@ const Faq = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // bg-gradient-to-br from-blue-300 via-gray-950 to-slate-800 
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center py-16 px-6 md:px-16"
+      className="min-h-screen flex flex-col items-center bg-gradient-to-bl from-blue-300 via-gray-950 to-slate-800  justify-center py-16 px-6 md:px-16"
       style={{
-        background: "linear-gradient(135deg, #0f172a 0%, #1e3a6e 40%, #1e40af 70%, #1d4ed8 100%)"
+        // background: "linear-gradient(135deg, #0f172a 0%, #1e3a6e 40%, #1e40af 70%, #1d4ed8 100%)"
+        // background: "linear-gradient(135deg, #0f172a 0%, #1e3a6e 40%, #1e40af 70%, #1d4ed8 100%)"
       }}
     >
       <div className="text-center max-w-3xl mx-auto mb-12">

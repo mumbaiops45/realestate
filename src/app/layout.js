@@ -1,4 +1,4 @@
-import {Noto_Sans } from "next/font/google";
+import {Noto_Sans  } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Component/Navbar";
 import Footer from "./Component/Footer";

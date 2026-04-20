@@ -1,89 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { properties } from "../data/data";
 
-const properties = [
-  {
-    id: 1,
-    title: "Luxury 2BHK Apartment",
-    location: "Bandra West, Mumbai",
-    price: "₹1.8 Cr",
-    image:
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
-    type: "For Sale",
-  },
-  {
-    id: 2,
-    title: "Sea View 3BHK Flat",
-    location: "Worli, Mumbai",
-    price: "₹4.5 Cr",
-    image:
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80",
-    type: "For Sale",
-  },
-  {
-    id: 3,
-    title: "Modern Studio Apartment",
-    location: "Navi Mumbai",
-    price: "₹75 Lakhs",
-    image:
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80",
-    type: "For Rent",
-  },
-  {
-    id: 4,
-    title: "Premium 4BHK Penthouse",
-    location: "Powai, Mumbai",
-    price: "₹6.2 Cr",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-    type: "For Sale",
-  },
-  {
-    id: 5,
-    title: "Luxury Villa",
-    location: "Juhu, Mumbai",
-    price: "₹8 Cr",
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-    type: "For Sale",
-  },
-   {
-    id: 6,
-    title: "Luxury 2BHK Apartment",
-    location: "Bandra West, Mumbai",
-    price: "₹1.8 Cr",
-    image:
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
-    type: "For Sale",
-  },
-  {
-    id: 7,
-    title: "Sea View 3BHK Flat",
-    location: "Worli, Mumbai",
-    price: "₹4.5 Cr",
-    image:
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80",
-    type: "For Sale",
-  },
-  {
-    id: 8,
-    title: "Modern Studio Apartment",
-    location: "Navi Mumbai",
-    price: "₹75 Lakhs",
-    image:
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80",
-    type: "For Rent",
-  },
-  {
-    id: 9,
-    title: "Premium 4BHK Penthouse",
-    location: "Powai, Mumbai",
-    price: "₹6.2 Cr",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-    type: "For Sale",
-  },
-];
 
 const Feature = () => {
   const sectionRef = useRef(null);
@@ -136,7 +54,7 @@ const Feature = () => {
   return (
    
     // <section ref={sectionRef} className="relative h-[300vh] bg-gray-50">
-     <section ref={sectionRef}  className="relative h-[300vh] bg-[url('/realestateimg.jpg')] bg-cover bg-center">
+     <section ref={sectionRef}  className="relative h-[200vh] bg-[url('/homeimgss.jpg')] bg-cover bg-center bg-fixed">
          <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
       <div className="sticky top-0 h-screen flex items-center">

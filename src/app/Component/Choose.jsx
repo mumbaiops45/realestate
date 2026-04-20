@@ -144,7 +144,9 @@ const Choose = () => {
     const item = features[currentIndex];
 
     return (
-        <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 px-6 md:px-16 py-20 overflow-hidden">
+        // <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 px-6 md:px-16 py-20 overflow-hidden">
+        <section className="relative min-h-screen bg-gradient-to-br from-blue-300 via-gray-950 to-slate-800 px-6 md:px-16 py-20 overflow-hidden">
+            
             <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500 opacity-20 blur-3xl rounded-full"></div>
             <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-500 opacity-20 blur-3xl rounded-full"></div>
 
@@ -164,7 +166,7 @@ const Choose = () => {
                 <div
                     className="group relative w-full md:w-[500px] bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 h-56 flex flex-col justify-between transition duration-500 hover:scale-105 hover:bg-white/20 hover:shadow-2xl"
                 >
-                    <div className='text-blue-400 group-hover:text-white transition'>
+                    <div className='text-white group-hover:text-white transition'>
                         {item.icon}
                     </div>
 
