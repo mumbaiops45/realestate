@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Poppins  } from "next/font/google";
-
+import { Poppins } from "next/font/google";
+import Link from "next/link";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -25,22 +25,21 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // 
-
   return (
     <>
       <footer
-        // className={`${inter.className} relative bg-[#44449f] text-white border-t border-white/10`}
-        //  className={`${inter.className}  bg-gradient-to-b from-blue-300 via-gray-950 to-slate-800 `}
-         className={`${inter.className}  bg-gradient-to-b from-[#0B1F3A] via-[#0A1630] to-[#050B18] `}
+        className={`${inter.className} relative bg-gradient-to-b from-[#0B1F3A] via-[#0A1630] to-[#050B18] text-white`}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none"></div>
+       
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_70%)] pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-20">
+       
+        <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-20">
 
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
+         
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
 
+            
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative w-12 h-12 rounded-md bg-white p-1">
@@ -52,62 +51,70 @@ const Footer = () => {
                     sizes="48px"
                   />
                 </div>
-                <h2 className="text-xl tracking-wide text-white uppercase font-semibold">
+                <h2 className="text-lg md:text-xl font-semibold uppercase tracking-wide">
                   Welcome Realty LLP
                 </h2>
               </div>
 
-              <p className="text-white/80 text-base leading-relaxed">
+              <p className="text-white/75 leading-relaxed text-sm md:text-base">
                 Premium real estate solutions tailored for modern and luxury living.
               </p>
             </div>
 
-           
+            
             <div>
-              <h3 className="text-base uppercase tracking-widest mb-6 text-white font-medium">
+              <h3 className="text-sm uppercase tracking-widest mb-6 text-white font-semibold">
                 Quick Links
               </h3>
 
-              <ul className="space-y-4 text-base text-white">
-                {["Properties", "About Us", "Services", "Contact"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item.toLowerCase().replace(" ", "")}`}
-                      className="hover:text-white transition"
+              <ul className="space-y-4 text-white/80">
+                {[
+                  { name: "Properties", path: "/service" },
+                  { name: "About Us", path: "/about" },
+                  { name: "Services", path: "/service" },
+                  { name: "Contact", path: "/contact" },
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.path}
+                      className="hover:text-white transition-colors"
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-           
+            
             <div>
-              <h3 className="text-base text-white uppercase tracking-widest mb-6 font-medium">
+              <h3 className="text-sm uppercase tracking-widest mb-6 text-white font-semibold">
                 Contact
               </h3>
 
-              <ul className="space-y-4 text-base text-white/80">
+              <ul className="space-y-4 text-white/75">
                 <li>
-                  <span className="text-white font-medium">Phone:</span> +91 xxxxx xxxxx
+                  <span className="text-white font-medium">Phone:</span>{" "}
+                  +91 9876543210
                 </li>
                 <li>
-                  <span className="text-white font-medium">Email:</span> info@welcomerealty.com
+                  <span className="text-white font-medium">Email:</span>{" "}
+                  info@welcomerealty.com
                 </li>
                 <li>
-                  <span className="text-white font-medium">WhatsApp:</span> +91 XXXXX XXXXX
+                  <span className="text-white font-medium">WhatsApp:</span>{" "}
+                  +91 9876543210
                 </li>
               </ul>
             </div>
 
-          
+           
             <div>
-              <h3 className="text-base text-white uppercase tracking-widest mb-6 font-medium">
+              <h3 className="text-sm uppercase tracking-widest mb-6 text-white font-semibold">
                 Stay Updated
               </h3>
 
-              <p className="text-white/80 text-base mb-5">
+              <p className="text-white/75 text-sm md:text-base mb-5">
                 Get latest property alerts & exclusive offers.
               </p>
 
@@ -115,25 +122,26 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full px-5 py-3 rounded-md bg-white text-black text-sm placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 outline-none transition"
+                  className="w-full px-4 py-3 rounded-md bg-white text-black text-sm placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 outline-none"
                 />
-                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-black hover:text-blue-600 text-lg transition">
+                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-black hover:text-blue-600 text-lg">
                   →
                 </button>
               </div>
 
-              <p className="text-white/60 text-sm mt-6">
+              <p className="text-white/60 text-xs md:text-sm mt-6">
                 Office: Bandra East, Mumbai - 400051
               </p>
             </div>
           </div>
 
-        
-          <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/70">
+          <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-white/60">
 
-            <p>© 2026 Nakshatra Namaha Creations Pvt. Ltd. All rights reserved.</p>
+            <p className="text-center md:text-left">
+              © 2026 Nakshatra Namaha Creations Pvt. Ltd. All rights reserved.
+            </p>
 
-            <p>
+            <p className="text-center">
               Designed & Developed by{" "}
               <a
                 href="https://www.nakshatranamahacreations.com/"
@@ -154,11 +162,11 @@ const Footer = () => {
         </div>
       </footer>
 
-   
+     
       {showScrollBtn && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-4 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition"
+          className="fixed bottom-8 right-8 z-50 p-3 md:p-4 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition"
           aria-label="Scroll to top"
         >
           ↑
