@@ -25,11 +25,14 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // 
+
   return (
     <>
       <footer
         // className={`${inter.className} relative bg-[#44449f] text-white border-t border-white/10`}
-         className={`${inter.className}  bg-gradient-to-b from-blue-300 via-gray-950 to-slate-800 `}
+        //  className={`${inter.className}  bg-gradient-to-b from-blue-300 via-gray-950 to-slate-800 `}
+         className={`${inter.className}  bg-gradient-to-b from-[#0B1F3A] via-[#0A1630] to-[#050B18] `}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none"></div>
 
@@ -49,7 +52,7 @@ const Footer = () => {
                     sizes="48px"
                   />
                 </div>
-                <h2 className="text-xl tracking-wide uppercase font-semibold">
+                <h2 className="text-xl tracking-wide text-white uppercase font-semibold">
                   Welcome Realty LLP
                 </h2>
               </div>
@@ -65,7 +68,7 @@ const Footer = () => {
                 Quick Links
               </h3>
 
-              <ul className="space-y-4 text-base text-white/80">
+              <ul className="space-y-4 text-base text-white">
                 {["Properties", "About Us", "Services", "Contact"].map((item) => (
                   <li key={item}>
                     <a
@@ -81,7 +84,7 @@ const Footer = () => {
 
            
             <div>
-              <h3 className="text-base uppercase tracking-widest mb-6 font-medium">
+              <h3 className="text-base text-white uppercase tracking-widest mb-6 font-medium">
                 Contact
               </h3>
 
@@ -100,7 +103,7 @@ const Footer = () => {
 
           
             <div>
-              <h3 className="text-base uppercase tracking-widest mb-6 font-medium">
+              <h3 className="text-base text-white uppercase tracking-widest mb-6 font-medium">
                 Stay Updated
               </h3>
 

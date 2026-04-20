@@ -145,3 +145,39 @@ export  const properties = [
     type: "For Sale",
   },
 ];
+
+
+
+
+ export const faqs = [
+    {
+      question: "Do you help with both buying and renting properties?",
+      answer:
+        "Yes, Welcome Realty LLP assists with buying, selling, and renting residential and commercial properties across Mumbai & Navi Mumbai."
+    },
+    {
+      question: "Are all listed properties verified?",
+      answer:
+        "Absolutely. Every property we list is legally verified to ensure transparency, safety, and peace of mind for our clients."
+    },
+    {
+      question: "Do you charge any brokerage fees?",
+      answer:
+        "Yes, brokerage charges depend on the type of property and transaction. We maintain full transparency with no hidden costs."
+    },
+    {
+      question: "Can I get assistance with home loans?",
+      answer:
+        "Yes, we help connect you with trusted banking partners and guide you through the home loan approval process."
+    },
+    {
+      question: "Which areas do you serve?",
+      answer:
+        "We primarily serve Mumbai and Navi Mumbai, including Bandra, Worli, Powai, Juhu, and surrounding prime locations."
+    },
+    {
+      question: "How do I schedule a property visit?",
+      answer:
+        "You can contact us directly through the website or call our team, and we will arrange a convenient site visit for you."
+    }
+  ];
