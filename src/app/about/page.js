@@ -105,7 +105,7 @@ const Page = () => {
                     />
                     <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
 
-                        <motion.h1 className="text-3xl md:text-5xl font-bold text-white mb-4"
+                        <motion.h1 className={`${notoSans.className} text-3xl md:text-5xl font-bold text-white mb-4`}
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.5 }}
@@ -114,7 +114,7 @@ const Page = () => {
                         </motion.h1>
 
                         <motion.p
-                            className="text-base md:text-lg text-gray-200 max-w-3xl"
+                            className={`${notoSans.className} text-base md:text-lg text-gray-200 max-w-3xl`}
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.8 }}
@@ -127,7 +127,7 @@ const Page = () => {
 
 
             <div className="max-w-6xl mx-auto mb-20 px-6 py-16 rounded-3xl  ">
-                <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-12 text-center md:text-left">
+                <h2 className={`${notoSans.className} text-3xl md:text-4xl font-semibold text-gray-900 mb-12 text-center md:text-left`}>
                     Who We Are
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -157,11 +157,11 @@ const Page = () => {
                             className={`transition-all duration-700 ease-out
         ${step >= 2 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
                         >
-                            <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+                            <p className={`${notoSans.className}text-gray-700 leading-relaxed text-base md:text-lg`}>
                                 Welcome Realty LLP is a trusted real estate consultancy known for its integrity, transparency, and client-first approach. Since 2009, we have helped hundreds of families and investors find the right properties in Mumbai & Navi Mumbai.
                             </p>
 
-                            <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-4">
+                            <p className={`${notoSans.className} text-gray-700 leading-relaxed text-base md:text-lg mt-4`}>
                                 Our team combines deep local market knowledge with strategic insights to deliver the best outcomes. From luxury homes to affordable housing and investment opportunities, we ensure every client finds the perfect match.
                             </p>
                         </div>
@@ -175,7 +175,7 @@ const Page = () => {
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">
                                 Our Mission
                             </h3>
-                            <p className="text-gray-600 text-sm md:text-base">
+                            <p className={`${notoSans.className} text-gray-600 text-sm md:text-base`}>
                                 To simplify the real estate journey through transparent, reliable, and personalized services — helping clients make confident property decisions.
                             </p>
                         </div>
@@ -189,7 +189,7 @@ const Page = () => {
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">
                                 Our Vision
                             </h3>
-                            <p className="text-gray-600 text-sm md:text-base">
+                            <p className={`${notoSans.className} text-gray-600 text-sm md:text-base`}>
                                 To be recognized as one of Mumbai’s most trusted real estate partners, delivering consistent value and exceptional client experiences.
                             </p>
                         </div>
@@ -200,7 +200,7 @@ const Page = () => {
 
             <div className="bg-[#d3d6e0] ">
                 <div ref={ref} className="max-w-6xl mx-auto px-6 py-20">
-                    <h2 className="text-3xl font-bold text-left  mb-10">
+                    <h2 className={`${notoSans.className} text-3xl font-bold text-left  mb-10`}>
                         Our Core Values
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -218,8 +218,8 @@ const Page = () => {
                                         style={{ y }}
                                         className="sticky top-24 w-full mb-6 p-6 border rounded-xl bg-blue-50 shadow-lg"
                                     >
-                                        <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                                        <p>{item.desc}</p>
+                                        <h3 className={`${notoSans.className} font-semibold text-lg mb-2`}>{item.title}</h3>
+                                        <p className={`${notoSans.className} `}>{item.desc}</p>
                                     </motion.div>
                                 );
                             })}
@@ -261,7 +261,7 @@ const Page = () => {
 
             <section className=" bg-blue-50  py-10 flex flex-col lg:flex-row gap-10">
                 <div className="lg:w-[30%]  pl-[60px] flex items-center">
-                    <h2 className="text-4xl md:text-5xl font-light leading-tight">
+                    <h2 className={`${notoSans.className}  text-4xl md:text-5xl font-light leading-tight`}>
                         Explore High-Value Property Investments
                     </h2>
                 </div>
@@ -291,7 +291,6 @@ const Page = () => {
                 </div>
 
             </section>
-
 
 
             <section className="py-16 bg-white text-center overflow-hidden">

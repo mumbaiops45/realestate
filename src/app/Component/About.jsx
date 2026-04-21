@@ -4,6 +4,12 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Playfair_Display, Inter } from "next/font/google";
 import { useRouter } from "next/navigation";
+import { Noto_Sans } from "next/font/google";
+
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500"] });
@@ -89,7 +95,7 @@ const About = () => {
             className="absolute -left-4 top-6 z-10 bg-white border border-[#e0d5c5] rounded-xl px-4 py-3 shadow-md"
           >
             <p className={`${playfair.className} text-2xl text-gray-900`}>2,400+</p>
-            <p className="text-[10px] tracking-[0.14em] uppercase text-[#a89a88] mt-0.5">
+            <p className="text-[10px] tracking-[0.14em] uppercase text-[#000000] mt-0.5">
               Homes built
             </p>
           </motion.div>
@@ -126,7 +132,7 @@ const About = () => {
                 <p className={`${playfair.className} text-4xl font-normal text-gray-900`}>
                   {s.value}
                 </p>
-                <p className="text-[11px] tracking-[0.08em] uppercase text-[#a89a88] mt-1">
+                <p className="text-[11px] tracking-[0.08em] uppercase text-[#000000] mt-1">
                   {s.label}
                 </p>
               </motion.div>
@@ -145,7 +151,7 @@ const About = () => {
               <motion.p
                 key={i}
                 {...fadeUp(0.1 + i * 0.15)}
-                className={`text-[15px] font-light leading-[1.85] text-[#4a4a4a] ${
+                className={`${notoSans.className} text-[15px] font-light leading-[1.85] text-[#000000] ${
                   i === 1 ? "md:border-l md:border-[#e8e4de] md:pl-8" : ""
                 }`}
               >
