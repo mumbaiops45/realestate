@@ -42,21 +42,49 @@ export const data = [
     },
 ];
 
+// export const testimonials = [
+//     {
+//         text: "The modular approach gave us flexibility we didn’t expect.",
+//         name: "Sophie L.",
+//         role: "Custom Modular Project"
+//     },
+//     {
+//         text: "We wanted a sustainable home without delays.",
+//         name: "Daniel M.",
+//         role: "Tiny Home Client"
+//     },
+//     {
+//         text: "Every detail felt intentional and premium.",
+//         name: "Sophie L.",
+//         role: "Custom Modular Project"
+//     }
+// ];
+
 export const testimonials = [
     {
-        text: "The modular approach gave us flexibility we didn’t expect.",
+        text: "The modular approach gave us a level of flexibility we honestly didn’t expect at the start. It allowed us to adapt our design as our needs evolved without any major delays.",
         name: "Sophie L.",
         role: "Custom Modular Project"
     },
     {
-        text: "We wanted a sustainable home without delays.",
+        text: "We wanted a sustainable home but were worried about long timelines. The team delivered exactly what we envisioned, and everything was completed much faster than we anticipated.",
         name: "Daniel M.",
         role: "Tiny Home Client"
     },
     {
-        text: "Every detail felt intentional and premium.",
+        text: "Every detail felt intentional and thoughtfully designed. From materials to finishing touches, the final outcome had a truly premium and well-crafted feel.",
         name: "Sophie L.",
         role: "Custom Modular Project"
+    },
+    {
+        text: "The entire process felt seamless from the initial design discussions to the final delivery. Communication was clear, and everything stayed on track without unnecessary stress.",
+        name: "Aarav K.",
+        role: "Prefab Home Client"
+    },
+    {
+        text: "They managed to balance speed, quality, and sustainability in a way that’s hard to find. We never felt like we had to compromise on any aspect of the project.",
+        name: "Emily R.",
+        role: "Eco Housing Project"
     }
 ];
 

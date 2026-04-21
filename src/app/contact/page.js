@@ -220,7 +220,7 @@ const Page = () => {
                             Whether you're looking to buy, sell, or rent, our expert agents are here
                             to guide you every step of the way. Don't wait - your dream property is just a click away.
                         </p>
-                        <button className="mt-4 flex items-center gap-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-200 transition">
+                        <button className="mt-4 flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-md hover:bg-gray-800 transition">
                             <PhoneOutlined />
                             Get Started Today
                         </button>

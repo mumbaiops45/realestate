@@ -234,9 +234,9 @@ const Page = () => {
               Buy, sell, or rent with expert guidance at every step.
             </p>
 
-            <button className="mt-7 flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full hover:scale-105 transition">
+            <button className="mt-7 flex items-center gap-3 bg-gray-900 text-white hover:bg-gray-800 px-6 py-3 rounded-full hover:scale-105 transition">
               <PhoneOutlined />
-              Get Started
+              Get Started Today
             </button>
           </motion.div>
         </div>
