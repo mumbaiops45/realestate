@@ -55,8 +55,6 @@ const Page = () => {
 
     return (
         <div>
-
-
             <section
                 ref={ref}
                 className="relative h-screen flex items-center justify-start text-white overflow-hidden"

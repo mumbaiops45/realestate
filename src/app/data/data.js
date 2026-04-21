@@ -176,8 +176,7 @@ export  const properties = [
 
 
 
-
- export const faqs = [
+export const faqs = [
     {
       question: "Do you help with both buying and renting properties?",
       answer:
@@ -208,4 +207,5 @@ export  const properties = [
       answer:
         "You can contact us directly through the website or call our team, and we will arrange a convenient site visit for you."
     }
-  ];
+];
+

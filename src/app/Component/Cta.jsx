@@ -42,7 +42,7 @@ const Cta = () => {
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
           <button 
           onClick={() => router.push("/service")}
-          className="px-8 py-3 rounded-full font-semibold bg-blue-600 text-white shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
+          className="px-8 py-3 rounded-full font-semibold bg-gray-900  text-white hover:bg-gray-800 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
             Explore Properties
           </button>
 

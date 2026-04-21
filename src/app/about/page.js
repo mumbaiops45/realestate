@@ -309,7 +309,7 @@ const Page = () => {
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                    className="mt-6 px-6 py-2 bg-gray-900 text-white rounded-lg shadow-md hover:bg-gray-800 transition"
                 >
                     Meet All Team
                 </motion.button>

@@ -96,7 +96,7 @@ const Feature = () => {
                       alt={property.title}
                       className="w-full h-52 object-cover group-hover:scale-110 transition duration-500"
                     />
-                    <span className="absolute top-3 left-3 bg-blue-600 text-white text-xs px-3 py-1 rounded-full">
+                    <span className="absolute top-3 left-3 bg-gray-600 text-white text-xs px-3 py-1 rounded-full">
                       {property.type}
                     </span>
                   </div>
@@ -110,11 +110,11 @@ const Feature = () => {
                     </p>
 
                     <div className="flex justify-between items-center mt-4">
-                      <span className="text-blue-600 font-bold text-lg">
+                      <span className="text-white font-bold text-lg">
                         {property.price}
                       </span>
 
-                      <button className="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                      <button className="text-sm bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-000 transition">
                         View Details
                       </button>
                     </div>
