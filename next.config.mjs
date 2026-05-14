@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactCompiler: true,
+// };
+
+// export default nextConfig;
+
+
 const nextConfig = {
-    output: "export",
-  reactCompiler: true,
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
